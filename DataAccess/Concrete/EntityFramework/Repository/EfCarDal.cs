@@ -12,11 +12,11 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework.Repository
 {
-    public class EfCarDal : EfEntityRepositoryBase<Car, RentACarContext>, ICarDal
+    public class EfCarDal : EfEntityRepositoryBase<Car, BitirmeContext>, ICarDal
     {
         public List<CarDetailDto> GetCarDetails(Expression<Func<Car, bool>> filter = null)
         {
-            using (RentACarContext context = new RentACarContext())
+            using (BitirmeContext context = new BitirmeContext())
             {
 
                 var result = from c in  context.Cars 
@@ -34,7 +34,7 @@ namespace DataAccess.Concrete.EntityFramework.Repository
                                  DailyPrice = c.DailyPrice,
                                  Descriptions = c.Descriptions,
                                  ModelYear = c.ModelYear,
-                                 CarImageDate = ci.CarImageDate,
+                                 CarImageDate = (DateTime)ci.CarImageDate,
                                  ImagePath = ci.ImagePath
 
                              };

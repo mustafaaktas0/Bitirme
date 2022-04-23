@@ -47,8 +47,8 @@ namespace Business.Concrete
             
         }
 
-      //  [CacheAspect(duration: 10)]
-       // [PerformanceAspect(1)]
+        [CacheAspect(duration: 10)]
+        [PerformanceAspect(1)]
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll());
